@@ -1,0 +1,27 @@
+<div class="todo-container">
+  <button mat-stroked-button color="primary" (click)="searchField = 'title'">
+    Title
+  </button>
+  <button
+    mat-stroked-button
+    color="primary"
+    (click)="searchField = 'description'"
+  >
+    Description
+  </button>
+  <input placeholder="Search..." (input)="searchInput = $event.target.value" />
+  <div
+    class="todo-list"
+    *ngFor="
+      let todo of todos | filterTodos: searchInput:searchField;
+      let i = index
+    "
+  >
+    <span>{{ index }}</span>
+    <app-todo-item
+      [todo]="todo"
+      [index]="i"
+      (todoDelete)="handleTodoDelete($event)"
+    ></app-todo-item>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.todo-item-container {
+  display: flex;
+  justify-content: space-around;
+  // justify-content: center;
+  // align-items: center;
+  background-color: rgb(240, 243, 245);
+}
+.todo-item-title {
+  font-weight: bold;
+}
+.todo-item-description {
+  .deleteBtn {
+    margin-left: auto;
+    margin-right: 10px;
+    background-color: rgb(245, 240, 243);
+  }
+}

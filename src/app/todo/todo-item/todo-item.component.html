@@ -1,0 +1,22 @@
+<div class="todo-item-container">
+  <div class="todo-item-title">{{ todo.title }}</div>
+  <div class="todo-item-description">{{ todo.description }}</div>
+
+  <br />
+  <button
+    mat-stroked-button
+    color="primary"
+    class="deleteBtn"
+    (click)="onDelete()"
+  >
+    Delete
+  </button>
+  <button
+    mat-stroked-button
+    color="primary"
+    class="editBtn"
+    (click)="openDialog()"
+  >
+    Edit
+  </button>
+</div>
