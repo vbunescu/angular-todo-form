@@ -1,11 +1,29 @@
 <h2>Edit ToDo</h2>
 <div class="edit-content">
-  <div>Title</div>
-  <input [(ngModel)]="todo.title" />
-  <div>Description</div>
-  <input [(ngModel)]="todo.description" />
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="todo.title" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="todo.description" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Author</mat-label>
+    <input matInput [(ngModel)]="todo.author" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Priority</mat-label>
+    <input matInput [(ngModel)]="todo.priority" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Date</mat-label>
+    <input matInput [(ngModel)]="todo.date" />
+  </mat-form-field>
 </div>
 <div class="dialog-actions">
-  <button (click)="onCancelClick()">Cancel</button>
-  <button [mat-dialog-close]="todo">Save editing</button>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="todo" color="primary">
+    Save editing
+  </button>
 </div>

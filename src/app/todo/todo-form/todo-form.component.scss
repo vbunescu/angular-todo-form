@@ -1,15 +1,10 @@
 .todo-form {
   display: flex;
   flex-direction: column;
-  width: 500px;
-  margin-bottom: 30px;
+  width: 400px;
+  margin-bottom: 20px;
 
-  Button {
-    margin-top: 10px;
-    line-height: 25px;
-    background-color: rgb(209, 231, 245);
+  small {
+    color: red;
   }
-}
-input {
-  line-height: 25px;
 }

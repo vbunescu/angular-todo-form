@@ -1,16 +1,54 @@
-<form class="todo-form">
-  <input
-    type="text"
-    placeholder="title"
-    [(ngModel)]="title"
-    [ngModelOptions]="{ standalone: true }"
-  />
-  <input
-    type="text"
-    placeholder="description"
-    [(ngModel)]="description"
-    [ngModelOptions]="{ standalone: true }"
-  />
+<form class="todo-form" [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Author</mat-label>
+    <input matInput formControlName="author" />
+    <div
+      *ngIf="todoForm.get('author').invalid && todoForm.get('author').touched"
+    >
+      <small *ngIf="todoForm.get('author').errors.required"
+        >Can not be blank</small
+      >
+      <small *ngIf="todoForm.get('author').errors.minlength">
+        Minimal length can not be less than
+        {{ todoForm.get("author").errors.minlength.requiredLength }}</small
+      >
+    </div>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <select matNativeControl required formControlName="priority">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+  </mat-form-field>
 
-  <button (click)="onSubmit()">Submit</button>
+  <mat-form-field class="example-full-width">
+    <mat-label>Deadline</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [min]="minDate"
+      formControlName="date"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="todoForm.invalid"
+  >
+    Add To Do
+  </button>
 </form>

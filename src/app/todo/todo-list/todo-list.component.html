@@ -1,27 +1,44 @@
 <div class="todo-container">
-  <button mat-stroked-button color="primary" (click)="searchField = 'title'">
-    Title
-  </button>
-  <button
-    mat-stroked-button
-    color="primary"
-    (click)="searchField = 'description'"
-  >
-    Description
-  </button>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle
+      value="title"
+      mat-stroked-button
+      color="primary"
+      (click)="searchField = 'title'"
+      >by title</mat-button-toggle
+    >
+    <mat-button-toggle
+      value="description"
+      mat-stroked-button
+      color="primary"
+      (click)="searchField = 'description'"
+      >by description</mat-button-toggle
+    >
+    <mat-button-toggle
+      value="priority"
+      mat-stroked-button
+      color="primary"
+      (click)="searchField = 'priority'"
+      >by priority</mat-button-toggle
+    >
+  </mat-button-toggle-group>
   <input placeholder="Search..." (input)="searchInput = $event.target.value" />
-  <div
+  <!-- <div class="list-title">
+    <div class="headers">Title</div>
+    <div class="headers">Description</div>
+    <div class="headers">Author</div>
+    <div class="headers">Priority</div>
+    <div class="headers lef">Deadline</div>
+    <div class="headers">Action</div>
+    <div class="headers">Action</div>
+  </div> -->
+  <mat-card
     class="todo-list"
-    *ngFor="
-      let todo of todos | filterTodos: searchInput:searchField;
-      let i = index
-    "
+    *ngFor="let todo of todos | filterTodos: searchInput:searchField"
   >
-    <span>{{ index }}</span>
     <app-todo-item
       [todo]="todo"
-      [index]="i"
       (todoDelete)="handleTodoDelete($event)"
     ></app-todo-item>
-  </div>
+  </mat-card>
 </div>

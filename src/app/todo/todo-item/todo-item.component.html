@@ -1,10 +1,13 @@
 <div class="todo-item-container">
-  <div class="todo-item-title">{{ todo.title }}</div>
-  <div class="todo-item-description">{{ todo.description }}</div>
+  <div class="todo-item-title">{{ todo.title | titlecase }}</div>
+  <div class="todo-item-description">{{ todo.description | titlecase }}</div>
+  <div class="todo-item-author">{{ todo.author | titlecase }}</div>
+  <div class="todo-item-priority">{{ todo.priority }}</div>
+  <div class="todo-item-date">{{ todo.date | date: "MM/dd/yyyy" }}</div>
 
   <br />
   <button
-    mat-stroked-button
+    mat-raised-button
     color="primary"
     class="deleteBtn"
     (click)="onDelete()"
@@ -12,7 +15,7 @@
     Delete
   </button>
   <button
-    mat-stroked-button
+    mat-raised-button
     color="primary"
     class="editBtn"
     (click)="openDialog()"
