@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Todo } from '../todo/todo-list/todo-list.component';
+import { Todo } from '../todo/todo-list/todo.interface';
 
 @Pipe({ name: 'filterTodos', pure: false })
 export class FilterTodosPipe implements PipeTransform {
@@ -16,3 +16,4 @@ export class FilterTodosPipe implements PipeTransform {
     });
   }
 }
+// de creatt enum pentru enumirile campurilor

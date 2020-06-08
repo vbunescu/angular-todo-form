@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Todo } from '../todo-list/todo-list.component';
+import { Todo } from '../todo-list/todo.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { TodoEditComponent } from '../todo-edit/todo-edit.component';
 
@@ -10,9 +10,8 @@ import { TodoEditComponent } from '../todo-edit/todo-edit.component';
 })
 export class TodoItemComponent {
   @Input() todo: Todo;
-  @Input() index: number;
   @Output() todoDelete = new EventEmitter<string>(); // va returna indexul care trebuie sters in elemntul parinte
-
+  // @Output() todoEdited = new EventEmitter<Todo>();
   constructor(public dialog: MatDialog) {}
 
   onDelete() {
@@ -21,13 +20,7 @@ export class TodoItemComponent {
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(TodoEditComponent, {
-      data: {
-        title: this.todo.title,
-        description: this.todo.description,
-        author: this.todo.author,
-        priority: this.todo.priority,
-        date: this.todo.date,
-      },
+      data: this.todo,
     });
     dialogRef.afterClosed().subscribe((result) => {
       this.todo = result;

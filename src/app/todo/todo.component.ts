@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Todo } from './todo-list/todo-list.component';
+import { TodosServices } from './todo-list/todos.services';
+import { Todo } from './todo-list/todo.interface';
 
 @Component({
   selector: 'app-todo',
@@ -7,32 +8,9 @@ import { Todo } from './todo-list/todo-list.component';
   styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent {
-  todos: Todo[] = [
-    {
-      id: 'dd32dsd-d-d23dd3d3d3d-ddesd',
-      title: 'create App',
-      description: 'use Angular',
-      author: 'VBunescu',
-      priority: '2',
-      date: new Date(),
-    },
-    {
-      id: 'dd32dsddsfsfdfsdfsd3d-ddesd',
-      title: 'change color',
-      description: 'use button',
-      author: 'Victoria',
-      priority: '1',
-      date: new Date(),
-    },
-    {
-      id: 'dd32dsfsdfdsfdshj3d3d3d-ddesd',
-      title: 'delete form',
-      description: 'delete button',
-      author: 'Veronica',
-      priority: '1',
-      date: new Date(),
-    },
-  ];
+  constructor(private todosService: TodosServices) {}
+
+  todos: Todo[] = this.todosService.getTodos();
 
   handleTodoSubmited(newTodo: Todo): void {
     const isTodoAlreadyExists = this.todos.some((todo: Todo) => {

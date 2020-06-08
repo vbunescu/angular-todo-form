@@ -22,16 +22,8 @@
       >by priority</mat-button-toggle
     >
   </mat-button-toggle-group>
+
   <input placeholder="Search..." (input)="searchInput = $event.target.value" />
-  <!-- <div class="list-title">
-    <div class="headers">Title</div>
-    <div class="headers">Description</div>
-    <div class="headers">Author</div>
-    <div class="headers">Priority</div>
-    <div class="headers lef">Deadline</div>
-    <div class="headers">Action</div>
-    <div class="headers">Action</div>
-  </div> -->
   <mat-card
     class="todo-list"
     *ngFor="let todo of todos | filterTodos: searchInput:searchField"
@@ -42,3 +34,13 @@
     ></app-todo-item>
   </mat-card>
 </div>
+
+<!-- <div class="list-title">
+    <div class="headers">Title</div>
+    <div class="headers">Description</div>
+    <div class="headers">Author</div>
+    <div class="headers">Priority</div>
+    <div class="headers lef">Deadline</div>
+    <div class="headers">Action</div>
+    <div class="headers">Action</div>
+  </div> -->

@@ -1,4 +1,11 @@
-<form class="todo-form" [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+<form
+  class="todo-form"
+  [formGroup]="todoForm"
+  (ngSubmit)="onSubmit()"
+  #formDirective="ngForm"
+>
+  <!-- facem legatura formei prin inregistrarea directivei [formGroup] prin care transmitem obiectul typescript-->
+  <!-- adaugam evenimentul in care apelam metoda onSubmit -->
   <mat-form-field>
     <mat-label>Title</mat-label>
     <input matInput formControlName="title" />

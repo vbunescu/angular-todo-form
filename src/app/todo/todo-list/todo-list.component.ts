@@ -1,13 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-export interface Todo {
-  id: string;
-  title: string;
-  description: string;
-  author: string;
-  priority: string;
-  date: Date;
-}
+import { Todo } from './todo.interface';
 
 @Component({
   selector: 'app-todo-list',
@@ -18,12 +10,9 @@ export class TodoListComponent {
   @Input() todos: Todo[];
   index: number;
   searchInput: string;
-  search = '';
+  search = ''; // by default un string gol
   searchField = 'title'; // by default
 
-  // handleTodoDelete(index: number): void {
-  //   this.todos.splice(index, 1);
-  // }
   handleTodoDelete(id: string) {
     let obj = this.todos.find((obj) => obj.id === id);
     if (this.todos.indexOf(obj) !== -1) {
@@ -31,7 +20,7 @@ export class TodoListComponent {
       this.todos.splice(this.todos.indexOf(obj), 1); // sterge din array indexul ientificat al obiectului + o pozitie
     }
   }
-  ngDoCheck() {
-    console.log(this.todos);
-  }
+  // ngDoCheck() {
+  //   console.log(this.todos);
+  // }
 }
